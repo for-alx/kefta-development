@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Add class{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/add_class.css">
+{% endblock %}
+
+
+{% block content%}
+<div class="add-class">
+	<form method="POST", enctype="multipart/form-data">
+		<h1 align="center">Add new class</h1>
+		<label for="class-name">Class name</label>
+		<input type="text" class="form-control" id="class-name" name="class-name" placeholder="Enter class name"/>
+
+		<input type=file name="file">
+		<br />
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+{% endblock %} 

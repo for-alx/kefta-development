@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/exam.css">
+{% endblock %}
+
+
+{% block content%}
+{% if exams|length == 0 %}
+<h1 class="class-name">No exam created yet</h1>
+{% else %}
+<h1 class="class-name">{{ exams[0].class.name }}</h1>
+{% endif %}
+{% for exam in exams %}
+<div class="exam-list" onclick="questionList('{{ exam.id }}')">
+	<!-- <img src="images/CPP.jpg" alt="" style="width:100% "> -->
+	<h1>{{ exam.name }}</h1>
+	<!-- <p class="price">$10.55/hour</p> -->
+	<p>By {{ exam.class.teacher.first_name }}</p>
+</div>
+{% endfor %}
+{% endblock %} 

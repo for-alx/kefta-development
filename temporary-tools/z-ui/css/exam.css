@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+.container {
+	padding-top: 100px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+/* EXAM-LIST */
+.container .class-name {
+    text-align: center;
+    padding: 14px 14px;
+    color: var(--color5);
+}
+.container .exam-list{
+    background: var(--color1);
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 14px 20px;
+    color: white;
+}
+.container .exam-list:hover {
+    background: var(--color3);
+    border: var(--color1) solid 1px;
+}
+
+
+/*  */
+

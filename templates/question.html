@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Question{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/question.css">
+{% endblock %}
+
+
+{% block content%}
+{% if questions|length == 0 %}
+<h1 class="exam-name">No question created yet</h1>
+{% else %}
+<h1 class="exam-name">{{ questions[1].exam.name }}</h1>
+{% endif %}
+
+{% for question in questions %}
+<div class="question">
+	<h2>{{ question.question }}</h2>
+	<form>
+		<label>
+			<input type="radio" name="answer" value="a" class="option">
+			a) {{ question.correct_option }}
+		</label>
+		<label>
+			<input type="radio" name="answer" value="b" class="option">
+			b) {{ question.option2 }}
+		</label>
+		<label>
+			<input type="radio" name="answer" value="c" class="option">
+			c) {{ question.option3 }}
+		</label>
+		<label>
+			<input type="radio" name="answer" value="d" class="option">
+			d) {{ question.option4 }}
+		</label>
+		<input type="submit" name="" value="Submit" class="send-answer">
+	</form>
+</div>
+{% endfor %}
+
+{% endblock %} 

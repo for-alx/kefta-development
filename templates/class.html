@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Class{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/class.css">
+{% endblock %}
+
+
+{% block content%}
+	{% for class in classes %}
+		<div class="class-card" onclick="examList('{{ class.id }}')" >
+			<img src="../static/user-data/{{ class.image_name }}" alt="" style="width:100% ">
+			<h1>{{ class.name }}</h1>
+			<p class="price">$10.55/hour</p>
+			<p>BY: {{ class.teacher.first_name }}</p>
+		</div>
+	{% endfor %}
+{% endblock %} 

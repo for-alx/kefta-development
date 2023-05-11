@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+/* HEADER */
+header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	margin: 0;
+}
+.navbar {
+	display: flex;
+	align-items: center;				/* center | */
+	justify-content: space-between;		/* create equal space -- */
+	background: var(--color3);
+	padding: 10px;
+	width: 100%;
+}
+.navbar-logo {
+	height: 50px;
+}
+.navbar-logo img {
+	height: 50px;
+	padding-left: 40%;
+}
+.navbar-search {
+	display: flex;
+	padding-left: 30%;
+}
+.navbar-search input {
+	height: 30px;
+	font-size: 14px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding-left: 5px;
+}
+.navbar-search button {
+	background: var(--color3);
+	border-radius: 5px;
+	color: white;
+	border: solid white 1px;
+	padding: 7px 15px;
+	cursor: pointer;
+}
+.navbar-buttons {
+	padding-right: 5%;
+}
+.navbar-buttons a {
+	color: white;
+	margin: 0 10px;
+	text-decoration: none;
+	padding: 26px 15px;
+
+}
+.navbar-buttons a:hover {
+	background: var(--color2);
+	border-radius: 5px;
+}
+.navbar-search button:hover {
+	background: var(--color2);
+}
+
+/*==================*/
+main .container {
+	padding-top: 100px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+/* flash-message */
+.flash-message {
+	z-index: -2;
+	position: absolute;
+	top: 70px;
+	width: 100%;
+	font-size: 20px;
+	text-align: center;
+	z-index: -2;
+	height: 23px;
+	overflow: hidden;
+}
+.alert-danger {
+	color: red;
+}
+.alert-success {
+	color: lawngreen;
+}
+.flash-message {
+    -webkit-animation: cssAnimation 2s forwards; 
+    animation: cssAnimation 2s forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}

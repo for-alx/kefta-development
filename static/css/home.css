@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+/* Container */
+main {
+	background-image: url("../images/Untitled-1.jpg");
+	background-size: cover;
+/*	background-attachment: fixed;*/
+}
+.container {
+	height: 720px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.container .tag-text {
+	padding-top: 180px;
+	font-size: 70px;
+	color: white;
+	padding-bottom: 80px;
+	text-shadow: black 5px;
+}
+.container .login-btn {
+	padding: 11px 37px;
+	font-size: 17px;
+	color: white;
+	background: var(--color3);
+	border-radius: 8px;
+	border: white 1px solid;
+	cursor: pointer;
+}
+.container .login-btn a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+.container .login-btn:hover {
+	background: var(--color2);
+}
+
+
+

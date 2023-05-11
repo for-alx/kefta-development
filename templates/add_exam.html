@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Add Exam{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/add_class.css">
+{% endblock %}
+
+
+{% block content%}
+<div class="add-class">
+	<form method="POST", enctype="multipart/form-data">
+		<h1 align="center">Add new exam for this class</h1>
+		<label for="class-name">Exam name</label>
+		<input type="text" class="form-control" id="exam-name" name="exam-name" placeholder="Enter exam name"/>
+
+		<br />
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+{% endblock %} 
