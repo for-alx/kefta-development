@@ -1,0 +1,158 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+main .container {
+	padding-top: 70px;
+/*	margin-left: 5%;*/
+    margin-left: 0;
+	margin-right: 0%; /* if any problem exit at right side try this */
+    display: flex;
+    height: 720px;
+}
+/* Admin columns */
+.container .admin-info {
+    width: 25%;
+    background: var(--color3);
+    text-align: center;
+}
+.container .admin-content {
+    width: 75%;
+/*    background: var(--color1);*/
+/*    text-align: center;*/
+    overflow-y: scroll;
+    height: 650px;
+}
+.container .admin-info .admin-profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-top: 100px;
+    margin-left: 30%;
+    border: 4px white solid;
+}
+.container .admin-info .admin-profile img {
+    width: 200px;
+    padding-right: 50px;
+}
+.container .admin-info h1 {
+    color: white;
+}
+.container .admin-info h2 {
+    color: white;
+}
+
+/* CLASS-CARD */
+.container .class-card {
+    margin: 26px;
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    transition: all 0.5s;
+/*    cursor: pointer;*/
+    padding-bottom: 30px;
+}
+.container .class-card img {
+    object-fit: cover;
+    width: auto;
+    height: 150px;
+    border-bottom: solid 5px rgb(10, 10, 15, 0.3);
+    border-radius: 8px;
+}
+.container .class-card h1 {
+    margin-top: 15px;
+    font-size: 25px;
+}
+.container .class-card .price {
+    font-weight: bold;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.container .class-card p {
+    padding-top: 10px;
+    padding-bottom: 16px;
+}
+.container .class-card button {
+    padding: 10px 20px 10px 20px;
+    margin: 15px 0 15px 0;
+    background: #3366ff;
+    border: none;
+    border-radius: 18px;
+    color: white;
+    cursor: pointer;
+}
+.container .class-card button:hover, .container .class-card:hover {
+    border: solid 2px #d1b3ff;
+}
+.container a {
+    color: black;
+}
+.container .class-card  .edit_btn {
+    text-decoration: none;
+    background: #4CAF50;
+    border-radius: 18px;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    margin-bottom: 50px;
+    z-index: 1;
+}
+.container .class-card  .remove_btn {
+    text-decoration: none;
+    background: #D9534F;
+    border-radius: 18px;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    z-index: 1;
+}
+.container .class-card .fake{
+    color: white;
+}
+.container .class-card  .edit_btn:hover {
+    background: #3e8e41;
+    cursor: pointer;
+}
+.container .class-card  .remove_btn:hover {
+    background: #d1332e;
+    cursor: pointer;
+}
+/* // */
+
+/* ADD-BUTTON */
+.container .add_button a {
+    bottom: 2%;
+    z-index: 2;
+    right: 3%;
+    position: fixed;
+    float: right;
+    background: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 27px;
+}
+.container .add_button a p {
+    padding-top: 6px;
+}
+.container .add_button a:hover {
+    background: darkred;
+    width: 43px;
+    height: 43px;
+}
+

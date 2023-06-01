@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/home.css">
+{% endblock %}
+
+
+{% block content%}
+
+<h1 class="tag-text">Let's Grow together</h1>
+
+<button class="login-btn" herf="/login"><a href="/login">LOGIN</a></button>
+{% endblock %}
+
+{% block home %}
+<div class="about-developers">
+	<h1>OUR TEAM</h1>
+	<p>Meet out team</p>
+	<div class="card-container">
+		<div class="developer-card">
+			<img src="../static/images/black-men.jpg">
+			<h1>Beab</h1>
+			<p>Fullstack web developer and computer scientist based in Addis Ethiopia</p>
+			<button><a href="https://for-alx.github.io/">Seemore</a></button>
+		</div>
+		<div class="developer-card">
+			<img src="../static/images/man_smoke.jpg">
+			<h1>Mesfin</h1>
+			<p>Fullstack web developer based in Addis Ethiopia</p>
+			<button><a href="https://for-alx.github.io/">Seemore</a></button>
+		</div>
+	</div>
+	
+</div>
+
+<div class="contact-us">
+	
+</div>
+
+<div class="footer">
+	<h2>Footer</h2>
+
+</div>
+{% endblock %}

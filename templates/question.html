@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Question{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/question.css">
+{% endblock %}
+
+
+{% block content%}
+{% if questions|length == 0 %}
+	<h1 class="exam-name">No question created yet</h1>
+{% else %}
+<!-- Else part start -->
+	<h1 class="exam-name">{{ questions[0].exam.name }}</h1>
+
+	{% for question in questions %}
+	<div class="question">
+		<h2>{{ question.question }}</h2>
+		<form>
+			<label>
+				<input type="radio" name="answer" value="a" class="option">
+				a) {{ question.correct_option }}
+			</label>
+			<label>
+				<input type="radio" name="answer" value="b" class="option">
+				b) {{ question.option2 }}
+			</label>
+			<label>
+				<input type="radio" name="answer" value="c" class="option">
+				c) {{ question.option3 }}
+			</label>
+			<label>
+				<input type="radio" name="answer" value="d" class="option">
+				d) {{ question.option4 }}
+			</label>
+			<input type="submit" name="" value="Submit" class="send-answer">
+		</form>
+		{% if question.exam.class.teacher.id == user.id %}
+			<div class="edit_question">
+				<a onclick="editQuestion('{{question.id}}')" class="edit_btn">Edit</a>
+				<a onclick="deleteQuestion('{{question.id}}')" class="remove_btn">Remove</a>
+			</div>
+		{% endif %}
+	</div>
+	{% endfor %}
+<!-- Else part end -->
+{% endif %}
+
+<!-- Add Button -->
+{% if current_exam.class.teacher_id == user.id %}
+<div class="add_button">
+	<a onclick="add_question('{{current_exam.id}}')" value="{{ current_exam.id }}">
+		<p>+</p>
+	</a>
+</div>
+{% endif %}
+
+{% endblock %} 

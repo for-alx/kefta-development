@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Exam{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/exam.css">
+{% endblock %}
+
+
+{% block content%}
+{% if exams|length == 0 %}
+	<h1 class="class-name">No exam created yet</h1>
+{% else %}
+	<h1 class="class-name">{{ exams[0].class.name }}</h1>
+{% endif %}
+
+
+{% for exam in exams %}
+<div class="exam-list" onclick="questionList('{{ exam.id }}')">
+	<h1>{{ exam.name }}</h1>
+	<p class="status">Taken by "{NO}" students.</p>
+
+	{% if exam.class.teacher.id == user.id %}
+		<div class="edit_question">
+			<a onclick="editExam('{{exam.id}}'); event.stopPropagation();" class="edit_btn">Edit</a>
+			<a onclick="deleteExam('{{exam.id}}'); event.stopPropagation();" class="remove_btn">Remove</a>
+		</div>
+	{% else %}
+		<div class="exam_mark">
+			<p class="status">@Your mark 62/70.</p>
+		</div>
+	{% endif %}
+</div>
+{% endfor %}
+
+
+<!-- Add Button -->
+{% if current_class.teacher_id == user.id %}
+<div class="add_button">
+	<a onclick="add_exam('{{current_class.id}}')" value="{{ current_class.id }}">
+		<p>+</p>
+	</a>
+</div>
+{% endif %}
+
+
+{% endblock %} 

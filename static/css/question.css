@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+.container {
+	padding-top: 100px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+/* QUESTIONS */
+.container .exam-name {
+    text-align: center;
+    padding: 14px 14px;
+    color: var(--color5);
+}
+.container .question {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.container .question h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+}
+.container .question label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.container .question .option {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.container .question .send-answer {
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--color3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.container .question .send-answer:hover {
+    background: var(--color2);
+}
+
+.container .edit_question {
+    padding-top: 10px;
+}
+.container .edit_question .edit_btn {
+    text-decoration: none;
+    background: #4CAF50;
+    border-radius: 18px;
+    padding: 5px 20px 5px 20px;
+    color: white;
+    margin-bottom: 50px;
+}
+.container .edit_question .remove_btn {
+    text-decoration: none;
+    background: #D9534F;
+    border-radius: 18px;
+    padding: 5px 20px 5px 20px;
+    color: white;
+}
+.container .edit_question .fake{
+    color: white;
+}
+.container .edit_btn:hover {
+    background: #3e8e41;
+    cursor: pointer;
+}
+.container .remove_btn:hover {
+    background: #d1332e;
+    cursor: pointer;
+}
+
+/* ADD-BUTTON */
+.container .add_button a {
+    bottom: 2%;
+    z-index: 2;
+    right: 3%;
+    position: fixed;
+    float: right;
+    background: red;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 27px;
+}
+.container .add_button a p {
+    padding-top: 6px;
+}
+.container .add_button a:hover {
+    background: darkred;
+    width: 43px;
+    height: 43px;
+}
+

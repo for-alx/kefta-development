@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Edit question{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/add_question.css">
+{% endblock %}
+
+
+{% block content%}
+<div class="add-question">
+	<form method="POST">
+		<h1 align="center">Edit question</h1>
+		<label for="class-name">Question</label><br>
+		<input type="text" class="add-option question" value="{{edit_question.question}}" id="question" name="question" placeholder="Enter Question"/>
+
+		<label for="class-name">Options</label><br>
+		<input type="text" class="add-option correct" value="{{edit_question.correct_option}}" id="question-option-correct" name="correct-option" placeholder="Enter Correct option"/>
+
+		<input type="text" class="add-option" value="{{edit_question.option2}}" id="option1" name="option2" placeholder="Enter option 2"/>
+
+		<input type="text" class="add-option" value="{{edit_question.option3}}" id="option3" name="option3" placeholder="Enter option 3"/>
+
+		<input type="text" class="add-option" value="{{edit_question.option4}}" id="option4" name="option4" placeholder="Enter option 4"/>
+
+		<br>
+		<button type="submit" class="btn btn-primary" value="done" name="done-btn">Done</button>
+
+	</form>
+</div>
+{% endblock %} 

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Class{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="../static/css/class.css">
+{% endblock %}
+
+
+{% block content%}
+	{% for class in classes %}
+		<div class="class-card" onclick="examList('{{ class.id }}')">
+			<img src="../static/user-data/{{ class.image_name }}" alt="" style="width:100% ">
+			<h1>{{ class.name }}</h1>
+			<p><b>By </b> {{ class.teacher.first_name }}</p>
+
+			{% if class.teacher.id == user.id %}
+				<a onclick="editClass('{{class.id}}'); event.stopPropagation();" class="edit_btn">Edit</a>
+				<br><br>
+				<a onclick="deleteClass('{{class.id}}'); event.stopPropagation();" class="remove_btn">Remove</a>
+			{% else %}
+				<!-- useless code fore maching -->
+				<a href="" class="fake">q</a>
+				<br><br>
+				<a href="" class="fake">q</a>
+			{% endif %}
+
+		</div>
+	{% endfor %}
+
+	<!-- Add Button -->
+	{% if user.__class__.__name__ == 'Teacher' and user.email != 'admin@admin.com' %}
+		<div class="add_button">
+			<a href="/add_class">
+				<!-- <img src="" width="40px" height="40px"> -->
+				<p>+</p>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %} 

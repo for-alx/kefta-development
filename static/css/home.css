@@ -1,0 +1,102 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+:root {
+	--color1: #1F6EBB;
+	--color2: #6998C7;
+	--color3: #227ACF;
+	--color4: #4890D5;
+	--color5: #0E3255;
+}
+/* Container */
+main {
+	background-image: url("../images/Untitled-1.jpg");
+	background-size: cover;
+/*	background-attachment: fixed;*/
+	box-shadow: 0px 0px 20px 0px black;
+	
+}
+.container {
+	height: 720px;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.container .tag-text {
+	padding-top: 110px;
+	font-size: 70px;
+	color: white;
+	padding-bottom: 50px;
+	text-shadow: black 5px;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-weight: 400;
+}
+.container .login-btn {
+	padding: 11px 37px;
+	font-size: 17px;
+	color: white;
+	background: var(--color3);
+	border-radius: 8px;
+	border: white 1px solid;
+	cursor: pointer;
+}
+.container .login-btn a {
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+.container .login-btn:hover {
+	background: var(--color2);
+}
+
+/* ABOUT-US */
+.about-developers {
+	text-align: center;
+	margin-top: 30px;
+}
+.about-developers h1 {
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-weight: 400;
+	margin: 10px 0;
+}
+.about-developers .card-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 50px 15%;
+}
+.about-developers .developer-card {
+	width: 250px;
+	text-align: center;
+}
+.about-developers .developer-card button {
+	background: var(--color3);
+	border-radius: 5px;
+	border: none;
+	padding: 8px 8px;
+	margin-top: 15px;
+}
+.about-developers .developer-card a {
+	text-decoration: none;
+	font-size: 18px;
+	color: white;
+}
+.about-developers .developer-card img {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+}
+.footer {
+	background: black;
+	text-align: center;
+	color: white;
+	padding-top: 50px;
+}
+.footer h2 {
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-weight: 400;
+}
+
