@@ -62,7 +62,8 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
         user_type = request.form.get('user-type')
-        # Don't forget to implement user_type variable if it's 'student' or 'teacher'
+        # Don't forget to implement user_type variable
+        # if it's 'student' or 'teacher'
 
         student = Student.query.filter_by(email=email).first()
         teacher = Teacher.query.filter_by(email=email).first()

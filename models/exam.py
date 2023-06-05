@@ -3,6 +3,7 @@
 """
 from datetime import datetime
 from models import db, generate_uuid
+from models.mark import Mark
 
 
 class Exam(db.Model):
@@ -16,7 +17,13 @@ class Exam(db.Model):
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    questions = db.relationship('Question', backref='exam', lazy=True, cascade="all, delete-orphan")
+    questions = db.relationship('Question', backref='exam', lazy=True,
+                                cascade="all, delete-orphan")
+    # added for mark if any problem couse by this line remove it
+    marks = db.relationship('Mark')
 
     def __repr__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+
+    def student_no(self):
+        return len(self.marks)

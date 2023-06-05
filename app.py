@@ -33,7 +33,6 @@ def create_app():
     app.register_blueprint(exam, url_prefix='/')
     app.register_blueprint(question, url_prefix='/')
 
-
     app.app_context().push()
     db.create_all()
     # with app.app_context():
@@ -56,6 +55,7 @@ def create_app():
 
 
 app = create_app()
+
 
 @app.teardown_appcontext
 def teardown_handler(self):

@@ -1,7 +1,35 @@
-// $(document).ready({
-// 	// alert('import succed')
-// 	console.log('Import succed')
-// })
+$(document).ready(function(){
+	// alert('import succed')
+  $(".send-answer").click(function(){
+    $(".correct_answer").css("display", "block");
+    console.log('button clicked')
+  });
+
+  $("#submitAnswers").click(function() {
+  	let answers = [];
+  	$("form").each(function() {
+  		let questionId = $(this).data("question-id");
+  		let selectedAnswer = $(this).find("input[name=answer]:checked").val();
+  		answers.push({ questionId: questionId, answer: selectedAnswer });
+  	});
+  	$.ajax({
+  		type: 'POST',
+  		url: 'http://127.0.0.1:5000/question/answer',
+  		data: JSON.stringify({answers}),
+  		contentType: 'application/json',
+  		success: function(result, status, xhr) {
+  			console.log("Data: " + result + "\nStatus: " + status);
+  			alert(`You get ${result} total score!`)
+  			$(".correct_answer").css("display", "block")
+  		}
+  	});
+  });
+
+  $("#search-btn").click(function() {
+  	let searchedWord = $("#search-word").val();
+  	searchClass(searchedWord);
+  })
+});
 
 function examList(class_id) {
 	// console.log('Class ID:', class_id)
@@ -41,4 +69,10 @@ function editExam(exam_id) {
 }
 function editQuestion(question_id) {
 	window.location.href = `/edit_question/${question_id}`;
+}
+
+// Search functions
+function searchClass(name) {
+	window.location.href = `/test/${name}`;
+	// console.log(`from function ${name}`)
 }

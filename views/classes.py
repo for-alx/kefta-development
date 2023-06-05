@@ -4,7 +4,8 @@
 from models import db
 from models.class_ import Class
 from models.teacher import Teacher
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
+from flask import Blueprint, render_template, request
+from flask import flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 import json
 from werkzeug.utils import secure_filename
@@ -22,17 +23,29 @@ def allowed_file(filename):
 
 
 # =====================Test route==============
-@classes.route('/test', methods=['GET', 'POST'])
-def test_route():
+@classes.route('/test/<string:word>', methods=['GET', 'POST'])
+def test_route(word):
+    searched_word = str(word)
+    print('==================')
+    print(searched_word)
+    all_class = Class.query.filter_by(name=searched_word).all()
+    all_teachers = Teacher.query.all()
+    return render_template('class.html', user=current_user,
+                           classes=all_class, teachers=all_teachers)
+# =============================================
+
+
+@classes.route('/admin', methods=['GET', 'POST'])
+def admin_route():
     if current_user.email == 'admin@admin.com':
         all_class = Class.query.all()
         # User_email = current_user.email
         # print(User_email)
-        return render_template('admin.html', user=current_user, classes=all_class)
+        return render_template('admin.html', user=current_user,
+                               classes=all_class)
     else:
         flash('Not Allowed for users.', category='error')
         return redirect(url_for('classes.class_s'))
-# =============================================
 
 
 @classes.route('/', methods=['GET', 'POST'])
@@ -45,7 +58,8 @@ def home():
 def class_s():
     all_class = Class.query.all()
     all_teachers = Teacher.query.all()
-    return render_template('class.html', user=current_user, classes=all_class, teachers=all_teachers)
+    return render_template('class.html', user=current_user,
+                           classes=all_class, teachers=all_teachers)
 
 
 @classes.route('/add_class', methods=['GET', 'POST'])
@@ -58,7 +72,8 @@ def add_class():
             new_file_name = str(uuid4())[:13]
 
             if len(class_name) < 3:
-                flash('Class Name must be greater than 3 chars.', category='error')
+                flash('Class Name must be greater than 3 chars.',
+                      category='error')
             # file handle
             if 'file' not in request.files:
                 flash('No file part', category='error')
@@ -69,11 +84,13 @@ def add_class():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(UPLOAD_FOLDER, filename))
 
-                new_class = Class(name=class_name, teacher_id=teacher_id, image_name=filename)
+                new_class = Class(name=class_name, teacher_id=teacher_id,
+                                  image_name=filename)
                 db.session.add(new_class)
                 db.session.commit()
                 flash('Class created.', category='success')
-                return redirect(url_for('exam.add_exam', class_id=new_class.id))
+                return redirect(url_for('exam.add_exam',
+                                class_id=new_class.id))
         return render_template('add_class.html', user=current_user)
     else:
         flash('Students can\'t create classes.', category='error')
@@ -89,7 +106,8 @@ def edit_class(class_id):
             class_name = request.form.get('class-name')
 
             if len(class_name) < 3:
-                flash('Class Name must be greater than 3 chars.', category='error')
+                flash('Class Name must be greater than 3 chars.',
+                      category='error')
             # file handle
             if 'file' not in request.files:
                 flash('No file part', category='error')
@@ -109,7 +127,8 @@ def edit_class(class_id):
                 return redirect(url_for('classes.class_s'))
 
         if edit_obj:
-            return render_template('edit_class.html', user=current_user, edit_class=edit_obj)
+            return render_template('edit_class.html', user=current_user,
+                                   edit_class=edit_obj)
         else:
             flash('Some thing is wrong!', category='error')
             return redirect(url_for('classes.class_s'))
@@ -128,4 +147,3 @@ def delete_class(class_id):
     else:
         flash('Students can\'t create classes.', category='error')
         return redirect(url_for('classes.class_s'))
-    

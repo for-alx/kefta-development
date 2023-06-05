@@ -15,7 +15,8 @@ class Class(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
     image_name = db.Column(db.String(60), nullable=False)
-    exams = db.relationship('Exam', backref='class', lazy=True, cascade="all, delete-orphan")
+    exams = db.relationship('Exam', backref='class', lazy=True,
+                            cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

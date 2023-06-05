@@ -53,6 +53,9 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.container .question .correct_answer {
+    display: none;
+}
 .container .question .send-answer:hover {
     background: var(--color2);
 }
@@ -111,4 +114,15 @@
     width: 43px;
     height: 43px;
 }
-
+.container #submitAnswers {
+    background: var(--color1);
+    padding: 8px 14px;
+    border-radius: 5px;
+    border: 3px solid white;
+    color: white;
+    font-size: 14px;
+    margin-left: 2%;
+}
+.container #submitAnswers:hover {
+    border: solid 3px var(--color4);
+}

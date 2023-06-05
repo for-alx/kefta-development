@@ -17,7 +17,7 @@
 {% for exam in exams %}
 <div class="exam-list" onclick="questionList('{{ exam.id }}')">
 	<h1>{{ exam.name }}</h1>
-	<p class="status">Taken by "{NO}" students.</p>
+	<p class="status">Taken by "{{ exam.student_no() }}" students.</p>
 
 	{% if exam.class.teacher.id == user.id %}
 		<div class="edit_question">
@@ -26,9 +26,14 @@
 		</div>
 	{% else %}
 		<div class="exam_mark">
-			<p class="status">@Your mark 62/70.</p>
+			{% for mark in exam.marks %}
+				{% if mark.student_id == user.id|string %}
+					<p class="status">Your mark {{ mark.mark }}</p>
+				{% endif %}
+			{% endfor %}
 		</div>
 	{% endif %}
+
 </div>
 {% endfor %}
 
