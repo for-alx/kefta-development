@@ -16,7 +16,8 @@ class Teacher(db.Model, UserMixin):
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    classes = db.relationship('Class', backref='teacher', lazy=True)
+    classes = db.relationship('Class', backref='teacher', lazy=True,
+                              cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

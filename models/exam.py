@@ -20,7 +20,8 @@ class Exam(db.Model):
     questions = db.relationship('Question', backref='exam', lazy=True,
                                 cascade="all, delete-orphan")
     # added for mark if any problem couse by this line remove it
-    marks = db.relationship('Mark')
+    marks = db.relationship('Mark', backref='exam', lazy=True,
+                            cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"

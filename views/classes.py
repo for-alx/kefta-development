@@ -19,15 +19,16 @@ UPLOAD_FOLDER = 'static/user-data'
 
 
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit(
+        '.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 # =====================Test route==============
 @classes.route('/test/<string:word>', methods=['GET', 'POST'])
 def test_route(word):
     searched_word = str(word)
-    print('==================')
-    print(searched_word)
+    # print('==================')
+    # print(searched_word)
     all_class = Class.query.filter_by(name=searched_word).all()
     all_teachers = Teacher.query.all()
     return render_template('class.html', user=current_user,
@@ -36,6 +37,7 @@ def test_route(word):
 
 
 @classes.route('/admin', methods=['GET', 'POST'])
+@login_required
 def admin_route():
     if current_user.email == 'admin@admin.com':
         all_class = Class.query.all()

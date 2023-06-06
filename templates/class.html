@@ -13,7 +13,7 @@
 			<h1>{{ class.name }}</h1>
 			<p><b>By </b> {{ class.teacher.first_name }}</p>
 
-			{% if class.teacher.id == user.id %}
+			{% if class.teacher.id == user.id or user.email == 'admin@admin.com' %}
 				<a onclick="editClass('{{class.id}}'); event.stopPropagation();" class="edit_btn">Edit</a>
 				<br><br>
 				<a onclick="deleteClass('{{class.id}}'); event.stopPropagation();" class="remove_btn">Remove</a>

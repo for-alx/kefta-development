@@ -40,7 +40,7 @@
 			<p class="correct_answer">Correct answer: {{ question.correct_option }}</p>
 
 		</form>
-		{% if question.exam.class.teacher.id == user.id %}
+		{% if question.exam.class.teacher.id == user.id or user.email == 'admin@admin.com' %}
 			<div class="edit_question">
 				<a onclick="editQuestion('{{question.id}}')" class="edit_btn">Edit</a>
 				<a onclick="deleteQuestion('{{question.id}}')" class="remove_btn">Remove</a>

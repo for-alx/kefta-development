@@ -5,14 +5,18 @@ from models.class_ import Class
 
 
 class ClassTestCase(unittest.TestCase):
+    """ """
     def setUp(self):
+        """ """
         db.create_all()
 
     def tearDown(self):
+        """ """
         db.session.remove()
         db.drop_all()
 
     def test_class_creation(self):
+        """ """
         # Create a test teacher
         teacher = Teacher(email='teacher@example.com')
         db.session.add(teacher)
@@ -31,6 +35,7 @@ class ClassTestCase(unittest.TestCase):
         self.assertEqual(test_class.exams, [])
 
     def test_class_representation(self):
+        """ """
         test_class = Class(name='Test Class', teacher_id='teacher_id',
                            image_name='test_image.jpg')
         representation = repr(test_class)

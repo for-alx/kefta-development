@@ -19,7 +19,7 @@
 	<h1>{{ exam.name }}</h1>
 	<p class="status">Taken by "{{ exam.student_no() }}" students.</p>
 
-	{% if exam.class.teacher.id == user.id %}
+	{% if exam.class.teacher.id == user.id or user.email == 'admin@admin.com' %}
 		<div class="edit_question">
 			<a onclick="editExam('{{exam.id}}'); event.stopPropagation();" class="edit_btn">Edit</a>
 			<a onclick="deleteExam('{{exam.id}}'); event.stopPropagation();" class="remove_btn">Remove</a>

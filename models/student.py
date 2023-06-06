@@ -16,7 +16,8 @@ class Student(db.Model, UserMixin):
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
-    marks = db.relationship('Mark', backref='student', lazy=True)
+    marks = db.relationship('Mark', backref='student', lazy=True,
+                            cascade="all, delete-orphan")
     # marks = db.relationship('Mark')
 
     def __repr__(self):

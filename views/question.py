@@ -28,18 +28,19 @@ def questions(exam_id):
             question = Question.query.filter_by(id=question_id).first()
             if question.correct_option == answer:
                 mark = mark + 1
-        mark_obj = Mark.query.filter_by(student_id=current_user.id, exam_id=question.exam_id).first()
+        mark_obj = Mark.query.filter_by(student_id=current_user.id,
+                                        exam_id=question.exam_id).first()
         print('================')
         print(mark_obj)
         if mark_obj is None:
-            new_obj = Mark(mark=mark, student_id=current_user.id, exam_id=question.exam_id)
+            new_obj = Mark(mark=mark, student_id=current_user.id,
+                           exam_id=question.exam_id)
             db.session.add(new_obj)
             db.session.commit()
         else:
             mark_obj.mark = mark
             db.session.add(mark_obj)
             db.session.commit()
-            
         return str(mark)
 
     all_question = Question.query.filter_by(exam_id=exam_id).all()

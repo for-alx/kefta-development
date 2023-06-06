@@ -34,6 +34,8 @@ def login():
             if check_password_hash(teacher.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(teacher, remember=True)
+                if current_user.email == 'admin@admin.com':
+                    return redirect(url_for('classes.admin_route'))
                 return redirect(url_for('classes.class_s'))
                 # return 'Logged in as teacher'
             else:
@@ -101,8 +103,8 @@ def sign_up():
                 db.session.commit()
                 login_user(new_teacher, remember=True)
                 flash('Account created!', category='success')
-                # return redirect(url_for('views.home'))
-                return 'account created'
+                return redirect(url_for('classes.class_s'))
+                # return 'account created'
 
     return render_template("sign_up.html", user=current_user)
 

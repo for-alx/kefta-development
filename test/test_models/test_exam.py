@@ -5,14 +5,18 @@ from models.exam import Exam
 
 
 class ExamTestCase(unittest.TestCase):
+    """ """
     def setUp(self):
+        """ """
         db.create_all()
 
     def tearDown(self):
+        """ """
         db.session.remove()
         db.drop_all()
 
     def test_exam_creation(self):
+        """ """
         # Create a test class
         test_class = Class(name='Test Class')
         db.session.add(test_class)
@@ -30,6 +34,7 @@ class ExamTestCase(unittest.TestCase):
         self.assertEqual(test_exam.marks, [])
 
     def test_exam_representation(self):
+        """ """
         test_exam = Exam(name='Test Exam', class_id='class_id')
         representation = repr(test_exam)
         expected_representation = "[Exam] ({id}) {data}".format(
@@ -37,6 +42,7 @@ class ExamTestCase(unittest.TestCase):
         self.assertEqual(representation, expected_representation)
 
     def test_student_no(self):
+        """ """
         test_exam = Exam(name='Test Exam', class_id='class_id')
         self.assertEqual(test_exam.student_no(), 0)
         # Create a test mark
@@ -46,6 +52,7 @@ class ExamTestCase(unittest.TestCase):
         self.assertEqual(test_exam.student_no(), 1)
 
     def test_student_no_with_multiple_marks(self):
+        """ """
         test_exam = Exam(name='Test Exam', class_id='class_id')
         self.assertEqual(test_exam.student_no(), 0)
         # Create multiple test marks

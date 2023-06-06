@@ -19,8 +19,8 @@ $(document).ready(function(){
   		contentType: 'application/json',
   		success: function(result, status, xhr) {
   			console.log("Data: " + result + "\nStatus: " + status);
-  			alert(`You get ${result} total score!`)
-  			$(".correct_answer").css("display", "block")
+  			alert(`You get ${result} total score!`);
+  			$(".correct_answer").css("display", "block");
   		}
   	});
   });

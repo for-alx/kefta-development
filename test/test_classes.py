@@ -10,7 +10,9 @@ from app import classes
 
 
 class ClassesTestCase(TestCase):
+    """ """
     def create_app(self):
+        """ """
         app = Flask(__name__)
         app.config['TESTING'] = True
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -21,6 +23,7 @@ class ClassesTestCase(TestCase):
         return app
 
     def setUp(self):
+        """ """
         db.create_all()
         # Create a test teacher
         teacher = Teacher(email='admin@admin.com')
@@ -30,10 +33,12 @@ class ClassesTestCase(TestCase):
         login_user(teacher)
 
     def tearDown(self):
+        """ """
         db.session.remove()
         db.drop_all()
 
     def test_admin_route(self):
+        """ """
         with self.client:
             response = self.client.get('/admin')
             self.assert200(response)
@@ -41,18 +46,21 @@ class ClassesTestCase(TestCase):
             self.assertIn(b'Not Allowed for users.', response.data)
 
     def test_home_route(self):
+        """ """
         with self.client:
             response = self.client.get('/')
             self.assert200(response)
             self.assert_template_used('home.html')
 
     def test_class_s_route(self):
+        """ """
         with self.client:
             response = self.client.get('/class')
             self.assert200(response)
             self.assert_template_used('class.html')
 
     def test_add_class_route_teacher(self):
+        """ """
         with self.client:
             response = self.client.get('/add_class')
             self.assert200(response)
@@ -64,6 +72,7 @@ class ClassesTestCase(TestCase):
             self.assertRedirects(response, '/exam/add_exam/class_id=1')
 
     def test_add_class_route_student(self):
+        """ """
         with self.client:
             # Log out the teacher
             self.client.get('/logout')
@@ -82,6 +91,7 @@ class ClassesTestCase(TestCase):
             self.assertRedirects(response, '/class')
 
     def test_edit_class_route_teacher(self):
+        """ """
         with self.client:
             # Create a test class
             test_class = Class(name='Test Class', teacher_id=current_user.id)
@@ -97,6 +107,7 @@ class ClassesTestCase(TestCase):
             self.assertRedirects(response, '/class')
 
     def test_edit_class_route_student(self):
+        """ """
         with self.client:
             # Log out the teacher
             self.client.get('/logout')
@@ -115,6 +126,7 @@ class ClassesTestCase(TestCase):
             self.assertRedirects(response, '/class')
 
     def test_delete_class_route_teacher(self):
+        """ """
         with self.client:
             # Create a test class
             test_class = Class(name='Test Class', teacher_id=current_user.id)
@@ -124,6 +136,7 @@ class ClassesTestCase(TestCase):
             self.assertRedirects(response, '/class')
 
     def test_delete_class_route_student(self):
+        """ """
         with self.client:
             # Log out the teacher
             self.client.get('/logout')
@@ -138,4 +151,4 @@ class ClassesTestCase(TestCase):
 
 
 if __name__ == '__main__':
-unittest.main()
+    unittest.main()
