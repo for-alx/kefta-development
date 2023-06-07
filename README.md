@@ -13,3 +13,8 @@ pip install Flask-Testing
 ```bash
 python3 app.py
 ```
+## Admin
+```bash
+Email='admin@admin.com'
+Password='mypassword'
+```
