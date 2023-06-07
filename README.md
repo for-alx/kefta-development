@@ -6,6 +6,7 @@ alx foundation final portfolio project development repo
 pip install Flask
 pip install Flask-Login
 pip install Flask-SQLAlchemy
+pip install Flask-Testing
 ```
 
 ## deployment

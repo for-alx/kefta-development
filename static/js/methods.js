@@ -73,6 +73,11 @@ function editQuestion(question_id) {
 
 // Search functions
 function searchClass(name) {
-	window.location.href = `/test/${name}`;
-	// console.log(`from function ${name}`)
+	if (name == '') {
+		console.log('Empty search field!')
+	} else {
+		// console.log(`from function ${name}`)
+		window.location.href = `/test/${name}`;
+
+	}
 }

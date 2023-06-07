@@ -55,6 +55,7 @@
 }
 .container .question .correct_answer {
     display: none;
+    color: green;
 }
 .container .question .send-answer:hover {
     background: var(--color2);

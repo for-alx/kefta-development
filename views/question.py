@@ -9,9 +9,15 @@ from flask import Blueprint, render_template, request
 from flask import flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 import json
+import random
 
 
 question = Blueprint('question', __name__)
+
+
+def shuffle_list(lst):
+    random.shuffle(lst)
+    return lst
 
 
 @question.route('/question/<string:exam_id>', methods=['GET', 'POST'])
@@ -46,7 +52,9 @@ def questions(exam_id):
     all_question = Question.query.filter_by(exam_id=exam_id).all()
     current_exam = Exam.query.filter_by(id=exam_id).first()
     return render_template('question.html', user=current_user,
-                           questions=all_question, current_exam=current_exam)
+                           questions=all_question,
+                           current_exam=current_exam,
+                           shuffle_list=shuffle_list)
 
 
 @question.route('/add_question', methods=['GET', 'POST'])

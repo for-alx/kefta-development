@@ -36,6 +36,17 @@ def test_route(word):
 # =============================================
 
 
+
+@classes.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template("home.html", user=current_user, home=True)
+
+
+@classes.route('/home', methods=['GET', 'POST'])
+def home_land():
+    return render_template("home.html", user=current_user, home=True)
+
+
 @classes.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin_route():
@@ -48,11 +59,6 @@ def admin_route():
     else:
         flash('Not Allowed for users.', category='error')
         return redirect(url_for('classes.class_s'))
-
-
-@classes.route('/', methods=['GET', 'POST'])
-def home():
-    return render_template("home.html", user=current_user, home=True)
 
 
 @classes.route('/class', methods=['GET', 'POST'])

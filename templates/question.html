@@ -20,22 +20,16 @@
 		<!-- don't forget to increment "q_number by one for each iteration!" -->
 		<form method="POST" data-question-id="{{ question.id }}">
 			<input type="" name="question_id" value="{{ question.id }}" style="display: none;">
-			<label>
-				<input type="radio" name="answer" value="{{ question.correct_option }}" class="option">
-				a) {{ question.correct_option }}
-			</label>
-			<label>
-				<input type="radio" name="answer" value="{{ question.option2 }}" class="option">
-				b) {{ question.option2 }}
-			</label>
-			<label>
-				<input type="radio" name="answer" value="{{ question.option3 }}" class="option">
-				c) {{ question.option3 }}
-			</label>
-			<label>
-				<input type="radio" name="answer" value="{{ question.option4 }}" class="option">
-				d) {{ question.option4 }}
-			</label>
+			{% set options = [question.correct_option, question.option2, question.option3, question.option4] %}
+			{% set shuffle_options = shuffle_list(options) %}
+			{% set option_letter = ['a', 'b', 'c', 'd'] %}
+
+			{% for index in [0, 1, 2, 3] %}
+				<label>
+					<input type="radio" name="answer" value="{{ shuffle_options[index] }}" class="option">
+					{{ option_letter[index] }}) {{ shuffle_options[index] }}
+				</label>
+			{% endfor %}
 
 			<p class="correct_answer">Correct answer: {{ question.correct_option }}</p>
 
