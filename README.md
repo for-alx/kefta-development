@@ -9,11 +9,11 @@ pip install Flask-SQLAlchemy
 pip install Flask-Testing
 ```
 
-## deployment
+## Deployment
 ```bash
 python3 app.py
 ```
-## Admin
+## Admin account
 ```bash
 Email='admin@admin.com'
 Password='mypassword'
